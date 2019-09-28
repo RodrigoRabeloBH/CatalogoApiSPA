@@ -2,8 +2,12 @@
 
 body {
   margin: 0;
+  overflow: hidden;
 }
 
 p {
   margin-left: 10px;
+}
+a{
+  cursor: pointer;
 }
