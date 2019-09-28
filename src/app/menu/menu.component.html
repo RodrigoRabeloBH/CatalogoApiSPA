@@ -10,7 +10,7 @@
         <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#exampleModal">login</a>
+        <a class="nav-link" data-toggle="modal" data-target="#exampleModal">Login</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/logout']" routerLinkActive="router-link-active">Logout</a>
@@ -30,23 +30,29 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form #loginForm="ngForm" (ngSubmit)="login()">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-              placeholder="Enter email" required>
+              placeholder="Enter email" required [(ngModel)]="model.email" name="email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required
+              [(ngModel)]="model.password" name="password" minlength="6">
           </div>
-          <button type="submit" class="btn btn-sm btn-dark mb-2">Submit</button>
+          <div class="form-group">
+            <label for="exampleInputPassword2">Confirm Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="ConfirmPassword" required
+              [(ngModel)]="model.comfirmpassword" name="confirmpassword" minlength="6">
+          </div>
+          <button type="submit" class="btn btn-sm btn-dark mb-2" [disabled]="!loginForm.valid">Login</button>
         </form>
       </div>
     </div>
   </div>
 </div>
-<div class="">
+<div>
   <router-outlet></router-outlet>
 </div>

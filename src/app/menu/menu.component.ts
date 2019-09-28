@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit {
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches)
-    );
+  model: any = {};
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private authService: AuthService) { }
 
+  ngOnInit() {
+  }
+
+  login() {
+    this.authService.login(this.model).subscribe(res => {
+      console.log('Login efetuado com sucesso');
+    }, err => { console.log(this.model); });
+  }
 }
