@@ -9,6 +9,7 @@ import { AuthService } from '../_services/auth.service';
 export class MenuComponent implements OnInit {
 
   model: any = {};
+  logged = false;
 
   constructor(private authService: AuthService) { }
 
@@ -16,8 +17,8 @@ export class MenuComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.model).subscribe(res => {
-      console.log('Login efetuado com sucesso');
-    }, err => { console.log(this.model); });
+    this.authService.login(this.model).subscribe(next => {
+      this.logged = true;
+    }, err => { console.log('Falha ao logar'); });
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-logout',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private produto: ProductService) { }
+  get() {
+    this.produto.get().subscribe(res => {
+      console.log(res);
+    });
+  }
   ngOnInit() {
   }
 

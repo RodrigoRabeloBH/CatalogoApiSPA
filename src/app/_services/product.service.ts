@@ -4,12 +4,11 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  baseUrl = 'http://localhost:5000/v1/api/autoriza/';
-
+export class ProductService {
+  productUrl = 'http://localhost:5000/v1/api/produtos';
   constructor(private http: HttpClient) { }
-
-  login(model: any) {
-    return this.http.post(this.baseUrl + 'login', model);
+  get() {
+    return this.http.get(this.productUrl);
   }
+
 }

@@ -42,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/categoria',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
